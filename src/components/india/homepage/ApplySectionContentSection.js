@@ -1,212 +1,105 @@
-const ApplySectionContentSection = () => {
-  const eligibleCountries = [
-    'Albania',
-    'Andorra',
-    'Angola',
-    'Anguilla',
-    'Antigua & Barbuda',
-    'Argentina',
-    'Armenia',
-    'Australia',
-    'Austria',
-    'Azerbaijan',
-    'Bahamas',
-    'Barbados',
-    'Belgium',
-    'Belize',
-    'Brazil',
-    'Bulgaria',
-    'Cambodia',
-    'Canada',
-    'Chile',
-    'Colombia',
-    'Croatia',
-    'Cyprus',
-    'Czech Republic',
-    'Denmark',
-    'Estonia',
-    'Finland',
-    'France',
-    'Georgia',
-    'Germany',
-    'Greece',
-    'Hungary',
-    'Iceland',
-    'Indonesia',
-    'Ireland',
-    'Israel',
-    'Italy',
-    'Japan',
-    'Latvia',
-    'Liechtenstein',
-    'Lithuania',
-    'Luxembourg',
-    'Malaysia',
-    'Malta',
-    'Mexico',
-    'Monaco',
-    'Mongolia',
-    'Netherlands',
-    'New Zealand',
-    'Norway',
-    'Oman',
-    'Philippines',
-    'Poland',
-    'Portugal',
-    'Qatar',
-    'Romania',
-    'Russia',
-    'Singapore',
-    'Slovakia',
-    'Slovenia',
-    'South Korea',
-    'Spain',
-    'Sweden',
-    'Switzerland',
-    'Thailand',
-    'UAE',
-    'United Kingdom',
-    'USA',
-    'Vietnam',
-  ];
+import { FaPassport, FaPlane, FaHotel, FaUserTie } from 'react-icons/fa';
+import { MdHealthAndSafety, MdEventAvailable } from 'react-icons/md';
+import Link from 'next/link';
 
-  const popularDestinations = [
-    { city: 'Delhi', description: 'Capital city, rich in history and culture' },
-    { city: 'Mumbai', description: 'Financial capital and entertainment hub' },
-    { city: 'Bangalore', description: 'Technology capital of India' },
-    { city: 'Agra', description: 'Home to the iconic Taj Mahal' },
-    { city: 'Jaipur', description: 'The Pink City of royal heritage' },
-    { city: 'Goa', description: 'Tropical paradise with beautiful beaches' },
-    { city: 'Varanasi', description: 'Spiritual capital of India' },
+const ApplySectionContentSection = () => {
+  const visaTypes = [
     {
-      city: 'Kerala',
-      description: 'God&apos;s own country with scenic backwaters',
+      icon: <FaPlane className="w-6 h-6" />,
+      title: 'Tourist e-Visa',
+      description:
+        'For leisure travel, sightseeing, and casual visits to India',
+      gradient: 'from-primary to-tertiary',
+      duration: 'Up to 180 days',
+    },
+    {
+      icon: <FaUserTie className="w-6 h-6" />,
+      title: 'Business e-Visa',
+      description: 'For business meetings, trade, and commercial activities',
+      gradient: 'from-accent to-primary',
+      duration: 'Up to 365 days',
+    },
+    {
+      icon: <MdHealthAndSafety className="w-6 h-6" />,
+      title: 'Medical e-Visa',
+      description: 'For medical treatment and wellness procedures in India',
+      gradient: 'from-tertiary to-accent',
+      duration: 'Up to 60 days',
+    },
+    {
+      icon: <MdEventAvailable className="w-6 h-6" />,
+      title: 'Conference e-Visa',
+      description: 'For attending conferences, seminars, and workshops',
+      gradient: 'from-primary to-accent',
+      duration: 'Up to 30 days',
     },
   ];
 
   return (
-    <div className="text-sm">
+    <div className="relative">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-t-xl bg-gradient-to-r from-secondary via-secondary to-primary">
-        <div className="absolute inset-0 bg-[url('/assets/images/india/common/pattern.png')] opacity-10"></div>
-        <h2 className="relative flex items-center justify-center py-4 text-base font-semibold text-center text-white md:text-lg">
-          Welcome to Indian e-Visa Services
-        </h2>
+      <div className="flex items-center mb-8 space-x-3">
+        <div className="relative">
+          <div className="absolute inset-0 scale-150 blur-xl bg-gradient-to-r from-primary via-accent to-tertiary opacity-20"></div>
+          <div className="relative flex items-center justify-center w-12 h-12 text-white rounded-xl bg-gradient-to-r from-primary to-tertiary">
+            <FaPassport className="w-6 h-6" />
+          </div>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">
+            Available e-Visa Types
+          </h3>
+          <p className="text-sm text-gray-500">
+            Select the most suitable visa category for your visit
+          </p>
+        </div>
       </div>
 
-      {/* Introduction Section */}
-      <div className="p-6 space-y-6">
-        <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-secondary">
-            Your Gateway to Incredible India
-          </h2>
-          <p className="leading-relaxed text-gray-600">
-            India, a land of diverse cultures, rich heritage, and technological
-            advancement, welcomes millions of visitors annually. From ancient
-            temples to modern tech hubs, from the majestic Himalayas to serene
-            coastal beaches, India offers an unparalleled travel experience. Our
-            e-Visa service simplifies your journey to explore this magnificent
-            country.
-          </p>
-        </div>
-
-        {/* Key Features */}
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            {
-              title: 'Quick Processing',
-              description:
-                'Fast and efficient visa processing with digital verification',
-            },
-            {
-              title: 'Secure Platform',
-              description:
-                'State-of-the-art security for your personal information',
-            },
-            {
-              title: '24/7 Support',
-              description:
-                'Round-the-clock assistance for your visa applications',
-            },
-          ].map((feature, index) => (
+      {/* Visa Types Grid */}
+      <div className="grid gap-6 sm:grid-cols-2">
+        {visaTypes.map((type, index) => (
+          <div key={index} className="relative group">
             <div
-              key={index}
-              className="p-4 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md"
-            >
-              <h3 className="mb-2 text-base font-semibold text-secondary">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-gray-600">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Eligible Countries Section */}
-        <div className="p-6 space-y-4 bg-gray-50 rounded-xl">
-          <h2 className="text-lg font-semibold text-secondary">
-            Eligible Countries for e-Visa
-          </h2>
-          <p className="text-gray-600">
-            Citizens of the following countries can apply for an Indian e-Visa.
-            The process is completely online and user-friendly.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {eligibleCountries.map((country, index) => (
-              <span
-                key={index}
-                className="px-3 py-1 text-xs text-gray-600 transition-all duration-300 bg-white rounded-full shadow-sm hover:shadow-md hover:text-primary"
-              >
-                {country}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Popular Destinations */}
-        <div className="space-y-4">
-          <h2 className="text-lg font-semibold text-secondary">
-            Popular Destinations
-          </h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {popularDestinations.map((dest, index) => (
-              <div
-                key={index}
-                className="p-4 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:scale-[1.02]"
-              >
-                <h3 className="mb-1 font-semibold text-primary">{dest.city}</h3>
-                <p className="text-sm text-gray-600">{dest.description}</p>
+              className="absolute inset-0 transition-transform duration-500 bg-gradient-to-r rounded-xl opacity-5 group-hover:opacity-10 group-hover:scale-105"
+              style={{
+                background: `linear-gradient(to right, var(--tw-gradient-stops))`,
+              }}
+            ></div>
+            <div className="relative p-5 transition-all duration-300 border-2 rounded-xl border-primary/10 hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5">
+              <div className="flex items-start space-x-4">
+                <div
+                  className={`flex items-center justify-center flex-shrink-0 w-12 h-12 text-white rounded-lg bg-gradient-to-r ${type.gradient} transition-transform duration-300 group-hover:scale-110`}
+                >
+                  {type.icon}
+                </div>
+                <div className="flex-1">
+                  <h4 className="mb-1 text-lg font-semibold text-secondary">
+                    {type.title}
+                  </h4>
+                  <p className="mb-2 text-sm text-gray-600">
+                    {type.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-500">
+                      Duration: {type.duration}
+                    </span>
+                    <Link
+                      href="/visa/step-one"
+                      className="text-sm font-medium text-transparent transition-all duration-300 bg-clip-text bg-gradient-to-r from-primary to-tertiary group-hover:scale-105"
+                    >
+                      Apply Now →
+                    </Link>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        {/* About Section */}
-        <div className="p-6 space-y-4 bg-gradient-to-r from-orange/5 to-primary/5 rounded-xl">
-          <h2 className="text-lg font-semibold text-secondary">
-            Why Choose Indian e-Visa?
-          </h2>
-          <div className="space-y-4 text-gray-600">
-            <p>
-              The Indian e-Visa system represents a significant advancement in
-              facilitating international travel to India. This digital platform
-              offers a streamlined, efficient process for obtaining travel
-              authorization, eliminating the need for physical visa
-              applications.
-            </p>
-            <p>
-              With multiple categories including tourist, business, and medical
-              visas, the system caters to diverse travel needs. The platform
-              ensures secure, swift processing while maintaining the highest
-              standards of security and verification.
-            </p>
-            <p>
-              Whether you&apos;re exploring India&apos;s rich cultural heritage,
-              pursuing business opportunities, or seeking medical treatment, our
-              e-Visa service provides a convenient gateway to your Indian
-              journey.
-            </p>
-          </div>
-        </div>
+      {/* Additional Info */}
+      <div className="p-4 mt-6 text-sm text-center text-gray-500 border-2 rounded-xl border-primary/10 bg-primary/5">
+        Processing time: 3-5 business days for most applications
       </div>
     </div>
   );

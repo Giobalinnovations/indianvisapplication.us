@@ -34,18 +34,17 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative overflow-hidden">
+    <footer className="relative overflow-hidden bg-secondary">
       {/* Background Decorations */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-black opacity-95"></div>
-      <div className="absolute inset-0 bg-[url('/assets/images/india/common/bannerfooter.png')] bg-cover bg-center opacity-20"></div>
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange/50 to-transparent"></div>
+      <div className="absolute inset-0 bg-mesh-pattern bg-repeat opacity-5"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-accent/5"></div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-orange/5 to-transparent"></div>
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent"></div>
+      {/* Top Border */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-tertiary"></div>
 
+      {/* Content */}
       <div className="relative">
-        <div className="container px-4 pt-16 pb-8 mx-auto md:px-0">
+        <div className="container px-4 pt-20 pb-8 mx-auto md:px-8">
           <div className="grid gap-12 md:grid-cols-12">
             {/* Logo and Contact Section */}
             <div className="md:col-span-4">
@@ -53,24 +52,27 @@ const Footer = () => {
                 href="/"
                 className="block mb-8 transition-transform duration-300 hover:scale-105"
               >
-                <Image
-                  src="/assets/images/india/common/logo-white.png"
-                  width={240}
-                  height={140}
-                  alt="logo"
-                  className="w-48"
-                />
+                <div className="relative">
+                  <div className="absolute inset-0 scale-110 blur-md bg-gradient-to-r from-primary via-accent to-tertiary opacity-0 transition-opacity duration-300 group-hover:opacity-30"></div>
+                  <Image
+                    src="/assets/images/india/common/logo-white.png"
+                    width={240}
+                    height={140}
+                    alt="Indian Visa Services"
+                    className="relative w-48"
+                  />
+                </div>
               </Link>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <Link
-                  href="mailto:info@traveltoindiaservices.com"
+                  href="mailto:support@indianvisaservices.com"
                   className="flex items-center group"
                 >
-                  <span className="flex items-center justify-center w-10 h-10 mr-4 transition-all duration-300 bg-white/10 rounded-full group-hover:bg-gradient-to-r group-hover:from-orange group-hover:to-primary group-hover:scale-110">
-                    <IoIosMail className="w-5 h-5 text-white" />
+                  <span className="flex items-center justify-center w-12 h-12 mr-4 transition-all duration-300 rounded-xl bg-white/5 backdrop-blur-sm group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-tertiary group-hover:scale-110">
+                    <IoIosMail className="w-6 h-6 text-white" />
                   </span>
                   <span className="text-sm text-gray-300 transition-all duration-300 group-hover:text-white">
-                    info@traveltoindiaservices.com
+                    support@indianvisaservices.com
                   </span>
                 </Link>
               </div>
@@ -80,7 +82,7 @@ const Footer = () => {
                     key={link.id}
                     href={link.href}
                     aria-label={link.label}
-                    className="flex items-center justify-center w-10 h-10 transition-all duration-300 bg-white/10 rounded-full hover:bg-gradient-to-r hover:from-orange hover:to-primary hover:scale-110 group"
+                    className="flex items-center justify-center w-12 h-12 transition-all duration-300 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-gradient-to-r hover:from-primary hover:to-tertiary hover:scale-110 group"
                   >
                     <span className="text-gray-300 transition-colors duration-300 group-hover:text-white">
                       {link.icon}
@@ -92,26 +94,29 @@ const Footer = () => {
 
             {/* Quick Links Section */}
             <div className="md:col-span-3">
-              <h3 className="mb-6 text-lg font-semibold text-white">
-                <span className="relative">
+              <h3 className="mb-8 text-lg font-semibold text-white">
+                <span className="relative inline-block">
                   Quick Links
-                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-primary to-transparent"></span>
                 </span>
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {[
                   'Home',
                   'About Us',
-                  'Apply VISA',
-                  'Ongoing Application',
+                  'Apply e-Visa',
+                  'Track Application',
                   'Contact Us',
                 ].map(item => (
                   <li key={item}>
                     <Link
                       href="/"
-                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-2 group"
                     >
-                      {item}
+                      <span className="relative">
+                        {item}
+                        <span className="absolute bottom-0 left-0 w-0 h-px transition-all duration-300 bg-gradient-to-r from-primary to-accent group-hover:w-full"></span>
+                      </span>
                     </Link>
                   </li>
                 ))}
@@ -120,55 +125,58 @@ const Footer = () => {
 
             {/* Visa Types Section */}
             <div className="md:col-span-3">
-              <h3 className="mb-6 text-lg font-semibold text-white">
-                <span className="relative">
-                  Apply For Indian VISA
-                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+              <h3 className="mb-8 text-lg font-semibold text-white">
+                <span className="relative inline-block">
+                  Indian e-Visa Types
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-primary to-transparent"></span>
                 </span>
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {[
-                  'Indian eVisa Online',
-                  'Indian Tourist eVisa',
-                  'Indian Medical eVisa',
-                  'Indian Business eVisa',
+                  'Tourist e-Visa',
+                  'Business e-Visa',
+                  'Medical e-Visa',
+                  'Conference e-Visa',
                 ].map(item => (
                   <li key={item}>
                     <Link
                       href="/visa/step-one"
-                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-2 group"
                     >
-                      {item}
+                      <span className="relative">
+                        {item}
+                        <span className="absolute bottom-0 left-0 w-0 h-px transition-all duration-300 bg-gradient-to-r from-primary to-accent group-hover:w-full"></span>
+                      </span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Support Section */}
+            {/* Legal Section */}
             <div className="md:col-span-2">
-              <h3 className="mb-6 text-lg font-semibold text-white">
-                <span className="relative">
-                  Support
-                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+              <h3 className="mb-8 text-lg font-semibold text-white">
+                <span className="relative inline-block">
+                  Legal
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-primary to-transparent"></span>
                 </span>
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {[
                   { text: 'Terms & Conditions', href: '/terms-and-conditions' },
                   { text: 'Privacy Policy', href: '/privacy-policy' },
-                  { text: 'Cookies Policy', href: '/cookie-policy' },
-                  {
-                    text: 'Cancellation and Refund Policy',
-                    href: '/cancellation-and-refund-policy',
-                  },
+                  { text: 'Cookie Policy', href: '/cookie-policy' },
+                  { text: 'Refund Policy', href: '/refund-policy' },
                 ].map(item => (
                   <li key={item.text}>
                     <Link
                       href={item.href}
-                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-2 group"
                     >
-                      {item.text}
+                      <span className="relative">
+                        {item.text}
+                        <span className="absolute bottom-0 left-0 w-0 h-px transition-all duration-300 bg-gradient-to-r from-primary to-accent group-hover:w-full"></span>
+                      </span>
                     </Link>
                   </li>
                 ))}
@@ -177,12 +185,15 @@ const Footer = () => {
           </div>
 
           {/* Copyright Section */}
-          <div className="pt-12 mt-12 text-center border-t border-white/10">
-            <p className="text-sm text-gray-400">
-              Copyright © {new Date().getFullYear()} |{' '}
-              <span className="font-medium text-white">E-Visa</span> | All
-              Rights Reserved
-            </p>
+          <div className="pt-12 mt-12 text-center border-t border-white/5">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-tertiary/5"></div>
+              <p className="relative text-sm text-gray-400">
+                © {new Date().getFullYear()} Indian Visa Services. All rights
+                reserved. This is a commercial website to apply for visa to
+                India.
+              </p>
+            </div>
           </div>
         </div>
       </div>
