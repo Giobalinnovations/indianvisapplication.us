@@ -36,7 +36,7 @@ const Footer = () => {
   return (
     <footer className="relative overflow-hidden bg-secondary">
       {/* Background Decorations */}
-      <div className="absolute inset-0 bg-mesh-pattern bg-repeat opacity-5"></div>
+      <div className="absolute inset-0 bg-repeat bg-mesh-pattern opacity-5"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-accent/5"></div>
 
       {/* Top Border */}
@@ -53,7 +53,7 @@ const Footer = () => {
                 className="block mb-8 transition-transform duration-300 hover:scale-105"
               >
                 <div className="relative">
-                  <div className="absolute inset-0 scale-110 blur-md bg-gradient-to-r from-primary via-accent to-tertiary opacity-0 transition-opacity duration-300 group-hover:opacity-30"></div>
+                  <div className="absolute inset-0 transition-opacity duration-300 scale-110 opacity-0 blur-md bg-gradient-to-r from-primary via-accent to-tertiary group-hover:opacity-30"></div>
                   <Image
                     src="/assets/images/india/common/logo-white.png"
                     width={240}
@@ -189,7 +189,7 @@ const Footer = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-tertiary/5"></div>
               <p className="relative text-sm text-gray-400">
-                © {new Date().getFullYear()} Indian Visa Services. All rights
+                © {new Date().getFullYear()} indianvisapplication.us. All rights
                 reserved. This is a commercial website to apply for visa to
                 India.
               </p>
