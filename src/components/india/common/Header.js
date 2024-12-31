@@ -16,75 +16,75 @@ const Header = ({ bgcolor }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 transition-all duration-500 backdrop-blur-lg ${
+      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/80 shadow-glass'
-          : 'bg-gradient-to-b from-secondary/80 via-secondary/50 to-transparent'
+          ? 'bg-white/90 backdrop-blur-xl border-b border-rose-100'
+          : 'bg-gray-900/80 backdrop-blur-sm'
       }`}
       style={{ zIndex: 50 }}
     >
-      <div className="absolute inset-0 bg-repeat bg-dots-pattern opacity-5"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-tertiary/5"></div>
+      {/* Decorative elements */}
+      <div className="absolute inset-0 bg-hex-pattern opacity-5"></div>
+      {scrolled ? (
+        <div className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r from-transparent via-rose-200 to-transparent"></div>
+      ) : (
+        <div className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r from-transparent via-rose-400/20 to-transparent"></div>
+      )}
 
       <nav className="container relative mx-auto">
-        <div className="flex items-center justify-between h-20 px-4 md:px-8">
+        <div className="flex items-center justify-between h-20 px-6">
           {/* Logo */}
           <Link href="/" className="relative group">
-            <div className="absolute inset-0 transition-opacity duration-300 scale-110 opacity-0 blur-sm bg-gradient-to-r from-primary via-accent to-tertiary group-hover:opacity-50"></div>
+            <div className="absolute inset-0 transition-all duration-300 opacity-0 rounded-xl bg-gradient-to-r from-rose-100 to-rose-200 blur-xl group-hover:opacity-20"></div>
             <Image
               src={
                 scrolled
                   ? '/assets/images/india/common/logo.png'
                   : '/assets/images/india/common/logo-white.png'
               }
-              width={160}
+              width={150}
               height={45}
-              alt="Indian Visa Services"
-              className="relative w-40 transition-all duration-500 group-hover:scale-105"
+              alt="Indian Visa Portal"
+              className="relative transition-transform duration-300 group-hover:scale-105"
+              priority
             />
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="items-center hidden space-x-12 md:flex">
+          {/* Desktop Navigation */}
+          <div className="items-center hidden space-x-8 md:flex">
             <Link href="/">
               <span
-                className={`text-sm font-medium transition-all duration-300 hover:text-accent relative
-                before:absolute before:-bottom-1 before:left-0 before:w-0 hover:before:w-full before:h-0.5
-                before:bg-gradient-to-r before:from-accent before:to-tertiary before:transition-all before:duration-300
-                after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-0.5
-                after:bg-gradient-to-r after:from-tertiary after:to-accent after:transition-all after:duration-500
-                after:translate-y-1 hover:after:translate-y-0 ${
-                  scrolled ? 'text-secondary' : 'text-white'
-                }`}
+                className={`nav-item ${
+                  scrolled ? 'text-gray-900' : 'text-white'
+                } hover:text-rose-600 transition-colors duration-300`}
               >
                 Home
               </span>
             </Link>
-            <Link href="#">
+            <Link href="/about">
               <span
-                className={`text-sm font-medium transition-all duration-300 hover:text-accent relative
-                before:absolute before:-bottom-1 before:left-0 before:w-0 hover:before:w-full before:h-0.5
-                before:bg-gradient-to-r before:from-accent before:to-tertiary before:transition-all before:duration-300
-                after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-0.5
-                after:bg-gradient-to-r after:from-tertiary after:to-accent after:transition-all after:duration-500
-                after:translate-y-1 hover:after:translate-y-0 ${
-                  scrolled ? 'text-secondary' : 'text-white'
-                }`}
+                className={`nav-item ${
+                  scrolled ? 'text-gray-900' : 'text-white'
+                } hover:text-rose-600 transition-colors duration-300`}
               >
-                Contact Us
+                About
+              </span>
+            </Link>
+            <Link href="/services">
+              <span
+                className={`nav-item ${
+                  scrolled ? 'text-gray-900' : 'text-white'
+                } hover:text-rose-600 transition-colors duration-300`}
+              >
+                Services
               </span>
             </Link>
             <Link href="/visa/step-one">
-              <span
-                className="relative px-6 py-2.5 text-sm font-semibold text-white transition-all duration-500 rounded-lg
-                before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-r before:from-primary before:to-tertiary before:transition-all before:duration-300
-                after:absolute after:inset-0 after:rounded-lg after:bg-gradient-to-r after:from-accent after:to-primary after:opacity-0 after:transition-all after:duration-300
-                hover:before:opacity-0 hover:after:opacity-100 overflow-hidden group"
-              >
-                <span className="relative z-10 inline-flex items-center">
-                  Apply for e-Visa
+              <span className="inline-flex items-center px-6 py-2.5 text-sm font-medium text-white bg-rose-600 rounded-full relative overflow-hidden group hover:bg-rose-700 transition-colors duration-300">
+                <span className="relative flex items-center">
+                  Start Application
                   <svg
-                    className="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1"
+                    className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -93,7 +93,7 @@ const Header = ({ bgcolor }) => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
                   </svg>
                 </span>
@@ -103,65 +103,56 @@ const Header = ({ bgcolor }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="p-2 md:hidden focus:outline-none group"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            className="relative p-2 md:hidden group"
+            aria-label="Toggle Menu"
           >
-            <div className="relative">
-              <div className="absolute inset-0 transition-opacity duration-300 rotate-45 opacity-0 blur-sm bg-gradient-to-r from-primary to-accent group-hover:opacity-50"></div>
-              {isOpen ? (
-                <FaTimes
-                  className={`w-6 h-6 transition-colors duration-300 relative ${
-                    scrolled ? 'text-secondary' : 'text-white'
-                  }`}
-                />
-              ) : (
-                <FaBars
-                  className={`w-6 h-6 transition-colors duration-300 relative ${
-                    scrolled ? 'text-secondary' : 'text-white'
-                  }`}
-                />
-              )}
-            </div>
+            <div className="absolute inset-0 transition-colors duration-300 rounded-lg group-hover:bg-rose-100/5"></div>
+            {isOpen ? (
+              <FaTimes
+                className={`w-6 h-6 relative ${
+                  scrolled ? 'text-gray-900' : 'text-white'
+                }`}
+              />
+            ) : (
+              <FaBars
+                className={`w-6 h-6 relative ${
+                  scrolled ? 'text-gray-900' : 'text-white'
+                }`}
+              />
+            )}
           </button>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Menu */}
         <div
-          className={`
-          absolute top-full left-0 right-0 bg-white/90 backdrop-blur-lg shadow-glass transition-all duration-500 md:hidden
+          className={`absolute top-full left-0 right-0 transition-all duration-300 bg-white/95 backdrop-blur-xl border-b border-rose-100 md:hidden
           ${
             isOpen
               ? 'opacity-100 visible translate-y-0'
               : 'opacity-0 invisible -translate-y-4'
-          }
-        `}
+          }`}
         >
-          <div className="divide-y divide-gray-100/20">
-            <Link href="/" onClick={() => setIsOpen(false)}>
-              <div className="px-8 py-4 transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:to-tertiary/10">
-                <span className="text-secondary">Home</span>
-              </div>
-            </Link>
-            <Link href="#" onClick={() => setIsOpen(false)}>
-              <div className="px-8 py-4 transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:to-tertiary/10">
-                <span className="text-secondary">Contact Us</span>
-              </div>
-            </Link>
-            <Link href="/visa/step-one" onClick={() => setIsOpen(false)}>
-              <div className="px-8 py-4 transition-all duration-300 bg-gradient-to-r from-primary/5 to-tertiary/5 hover:from-primary/10 hover:to-tertiary/10">
-                <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">
-                  Apply for e-Visa
-                </span>
-              </div>
-            </Link>
-          </div>
+          <nav className="divide-y divide-rose-100">
+            {['Home', 'About', 'Services'].map(item => (
+              <Link key={item} href="/" onClick={() => setIsOpen(false)}>
+                <div className="px-6 py-4 transition-colors duration-200 hover:bg-rose-50">
+                  <span className="text-gray-900">{item}</span>
+                </div>
+              </Link>
+            ))}
+            <div className="p-4">
+              <Link
+                href="/visa/step-one"
+                onClick={() => setIsOpen(false)}
+                className="block w-full py-3 text-center text-white transition-colors duration-200 rounded-lg bg-rose-600 hover:bg-rose-700"
+              >
+                Start Application
+              </Link>
+            </div>
+          </nav>
         </div>
       </nav>
-
-      {bgcolor && scrolled && (
-        <div className="h-px bg-gradient-to-r from-primary/20 via-accent/20 to-tertiary/20" />
-      )}
     </header>
   );
 };
